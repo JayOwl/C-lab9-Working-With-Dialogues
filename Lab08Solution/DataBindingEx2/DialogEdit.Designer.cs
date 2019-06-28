@@ -32,8 +32,6 @@
             this.labelQuantityPrompt = new System.Windows.Forms.Label();
             this.textBoxExtension = new System.Windows.Forms.TextBox();
             this.textBoxQuantity = new System.Windows.Forms.TextBox();
-            this.labelProductData = new System.Windows.Forms.Label();
-            this.labelProductLegend = new System.Windows.Forms.Label();
             this.labelCostPrompt = new System.Windows.Forms.Label();
             this.labelDescriptionPrompt = new System.Windows.Forms.Label();
             this.labelSkuPrompt = new System.Windows.Forms.Label();
@@ -83,24 +81,6 @@
             this.textBoxQuantity.Size = new System.Drawing.Size(76, 20);
             this.textBoxQuantity.TabIndex = 17;
             this.textBoxQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // labelProductData
-            // 
-            this.labelProductData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProductData.Location = new System.Drawing.Point(533, 134);
-            this.labelProductData.Name = "labelProductData";
-            this.labelProductData.Size = new System.Drawing.Size(160, 120);
-            this.labelProductData.TabIndex = 27;
-            this.labelProductData.Text = "One\r\nTwo\r\nThree\r\nFour\r\nFive\r\nSix\r\nSeven";
-            // 
-            // labelProductLegend
-            // 
-            this.labelProductLegend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProductLegend.Location = new System.Drawing.Point(444, 134);
-            this.labelProductLegend.Name = "labelProductLegend";
-            this.labelProductLegend.Size = new System.Drawing.Size(83, 120);
-            this.labelProductLegend.TabIndex = 26;
-            this.labelProductLegend.Text = "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7";
             // 
             // labelCostPrompt
             // 
@@ -179,8 +159,6 @@
             this.Controls.Add(this.labelQuantityPrompt);
             this.Controls.Add(this.textBoxExtension);
             this.Controls.Add(this.textBoxQuantity);
-            this.Controls.Add(this.labelProductData);
-            this.Controls.Add(this.labelProductLegend);
             this.Controls.Add(this.labelCostPrompt);
             this.Controls.Add(this.labelDescriptionPrompt);
             this.Controls.Add(this.labelSkuPrompt);
@@ -191,6 +169,7 @@
             this.Controls.Add(this.textBoxCost);
             this.Name = "DialogEdit";
             this.Text = "Product Edit Dialog";
+            this.Load += new System.EventHandler(this.DialogEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,8 +181,6 @@
         private System.Windows.Forms.Label labelQuantityPrompt;
         private System.Windows.Forms.TextBox textBoxExtension;
         private System.Windows.Forms.TextBox textBoxQuantity;
-        private System.Windows.Forms.Label labelProductData;
-        private System.Windows.Forms.Label labelProductLegend;
         private System.Windows.Forms.Label labelCostPrompt;
         private System.Windows.Forms.Label labelDescriptionPrompt;
         private System.Windows.Forms.Label labelSkuPrompt;

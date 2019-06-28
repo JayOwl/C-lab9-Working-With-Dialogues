@@ -28,23 +28,23 @@ namespace DataBindingEx2
 
         private void setBindings()
         {
-            textBoxQuantity.DataBindings.Add("Text", productVM, "Product.Quantity",
-                                              true, DataSourceUpdateMode.OnValidation,
-                                             "0", "#,##0;(#,##0);0");
+            //textBoxQuantity.DataBindings.Add("Text", productVM, "Product.Quantity",
+            //                                  true, DataSourceUpdateMode.OnValidation,
+            //                                 "0", "#,##0;(#,##0);0");
 
-            textBoxSku.DataBindings.Add("Text", productVM, "Product.Sku", false, DataSourceUpdateMode.OnValidation, "");
+            //textBoxSku.DataBindings.Add("Text", productVM, "Product.Sku", false, DataSourceUpdateMode.OnValidation, "");
 
-            textBoxDescription.DataBindings.Add("Text", productVM, "Product.Description");
+            //textBoxDescription.DataBindings.Add("Text", productVM, "Product.Description");
 
-            textBoxCost.DataBindings.Add("Text", productVM, "Product.Cost", 
-                                          true, DataSourceUpdateMode.OnValidation,
-                                         "0.00", "#,##0.00;(#,##0.00);0.00");
+            //textBoxCost.DataBindings.Add("Text", productVM, "Product.Cost", 
+            //                              true, DataSourceUpdateMode.OnValidation,
+            //                             "0.00", "#,##0.00;(#,##0.00);0.00");
 
-            checkBoxTaxable.DataBindings.Add("Checked", productVM, "Product.IsTaxable");
+            //checkBoxTaxable.DataBindings.Add("Checked", productVM, "Product.IsTaxable");
 
-            textBoxExtension.DataBindings.Add("Text", productVM, "Product.Extension",
-                                               true, DataSourceUpdateMode.OnValidation,
-                                              "0.00", "#,##0.00;(#,##0.00);0.00");
+            //textBoxExtension.DataBindings.Add("Text", productVM, "Product.Extension",
+            //                                   true, DataSourceUpdateMode.OnValidation,
+            //                                  "0.00", "#,##0.00;(#,##0.00);0.00");
 
             dataGridViewProducts.AutoGenerateColumns = false;
             dataGridViewProducts.DataSource = productVM.Products;
@@ -137,10 +137,7 @@ namespace DataBindingEx2
             int index = dataGridViewProducts.CurrentRow.Index;
 
             Product product = productVM.Products[index];
-            productVM.SetDisplayProduct(product);
-
-            labelProductLegend.Text = string.Empty;
-            labelProductData.Text = string.Empty;
+            productVM.SetDisplayProduct(product);          
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -170,8 +167,7 @@ namespace DataBindingEx2
                                               , product.Extension
                                               , product.IsTaxable);
 
-            labelProductLegend.Text = outputLegend;
-            labelProductData.Text = outputData;
+   
         }
 
         private void ButtonEditRecord_Click(object sender, EventArgs e)
