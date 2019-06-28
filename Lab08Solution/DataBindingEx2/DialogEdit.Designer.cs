@@ -40,6 +40,7 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.checkBoxTaxable = new System.Windows.Forms.CheckBox();
             this.textBoxCost = new System.Windows.Forms.TextBox();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelExtensionPrompt
@@ -117,6 +118,7 @@
             this.buttonSave.TabIndex = 25;
             this.buttonSave.Text = "Sa&ve";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // textBoxSku
             // 
@@ -150,11 +152,21 @@
             this.textBoxCost.TabIndex = 23;
             this.textBoxCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(384, 294);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.TabIndex = 30;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            // 
             // DialogEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.labelExtensionPrompt);
             this.Controls.Add(this.labelQuantityPrompt);
             this.Controls.Add(this.textBoxExtension);
@@ -189,5 +201,6 @@
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.CheckBox checkBoxTaxable;
         private System.Windows.Forms.TextBox textBoxCost;
+        private System.Windows.Forms.Button buttonClose;
     }
 }

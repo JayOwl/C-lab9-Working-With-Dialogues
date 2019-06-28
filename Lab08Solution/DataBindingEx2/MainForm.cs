@@ -28,24 +28,6 @@ namespace DataBindingEx2
 
         private void setBindings()
         {
-            //textBoxQuantity.DataBindings.Add("Text", productVM, "Product.Quantity",
-            //                                  true, DataSourceUpdateMode.OnValidation,
-            //                                 "0", "#,##0;(#,##0);0");
-
-            //textBoxSku.DataBindings.Add("Text", productVM, "Product.Sku", false, DataSourceUpdateMode.OnValidation, "");
-
-            //textBoxDescription.DataBindings.Add("Text", productVM, "Product.Description");
-
-            //textBoxCost.DataBindings.Add("Text", productVM, "Product.Cost", 
-            //                              true, DataSourceUpdateMode.OnValidation,
-            //                             "0.00", "#,##0.00;(#,##0.00);0.00");
-
-            //checkBoxTaxable.DataBindings.Add("Checked", productVM, "Product.IsTaxable");
-
-            //textBoxExtension.DataBindings.Add("Text", productVM, "Product.Extension",
-            //                                   true, DataSourceUpdateMode.OnValidation,
-            //                                  "0.00", "#,##0.00;(#,##0.00);0.00");
-
             dataGridViewProducts.AutoGenerateColumns = false;
             dataGridViewProducts.DataSource = productVM.Products;
         }
@@ -142,40 +124,34 @@ namespace DataBindingEx2
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            int index = dataGridViewProducts.CurrentRow.Index;
+            //int index = dataGridViewProducts.CurrentRow.Index;
 
-            Product product = productVM.GetDisplayProduct();
-            productVM.Products[index] = product;
-            productVM.Products.ResetItem(index);
-
-            string outputLegend = string.Format("{0}\r\n{1}\r\n{2}\r\n{3}\r\n{4}\r\n{5}\r\n{6}\r\n"
-                                              , "ProdID:"
-                                              , "Quantity:"
-                                              , "SKU:"
-                                              , "Desc:"
-                                              , "Cost:"
-                                              , "Extension:"
-                                              , "Taxable:");
-
-
-            string outputData = string.Format("{0}\r\n{1:N0}\r\n{2}\r\n{3:N2}\r\n{4:N2}\r\n{5:N2}\r\n{6}\r\n"
-                                              , product.ProductId
-                                              , product.Quantity
-                                              , product.Sku
-                                              , product.Description
-                                              , product.Cost
-                                              , product.Extension
-                                              , product.IsTaxable);
+            //Product product = productVM.GetDisplayProduct();
+            //productVM.Products[index] = product;
+            //productVM.Products.ResetItem(index);
 
    
         }
 
         private void ButtonEditRecord_Click(object sender, EventArgs e)
         {
-            DialogEdit mainForm = new DialogEdit();
+            DialogEdit dialog = new DialogEdit();
 
-            mainForm.ShowDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                int index = dataGridViewProducts.CurrentRow.Index;
+                Product product = productVM.GetDisplayProduct();
 
+                product.Description = dialog.Description;
+                product.Quantity = dialog.Quantity;
+
+
+
+                productVM.Products[index] = product;
+                productVM.Products.ResetItem(index);
+            }
+
+            dialog.Dispose();
         }
     }
 }

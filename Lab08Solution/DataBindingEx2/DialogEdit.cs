@@ -12,7 +12,19 @@ namespace DataBindingEx2
 {
     public partial class DialogEdit : Form
     {
-        private ProductViewModel productVM;
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+        public string Sku { get; set; }
+        public string Description { get; set; }
+        public decimal Cost { get; set; }
+        public bool IsTaxable { get; set; }
+        //public decimal Extension
+        //{
+        //    get { return Quantity * Cost; }
+        //}
+
+        // public ind
+
         public DialogEdit()
         {
             InitializeComponent();
@@ -20,61 +32,28 @@ namespace DataBindingEx2
 
         private void DialogEdit_Load(object sender, EventArgs e)
         {
-            setBindings2();
+           // string StringQuantity = string(Quantity);
+            
+            textBoxQuantity.Text = Quantity.ToString();
+            textBoxSku.Text = Description;
+            textBoxDescription.Text = Description;
         }
 
-        private void setBindings2()
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
-            textBoxQuantity.DataBindings.Add("Text", productVM, "Product.Quantity",
-                                              true, DataSourceUpdateMode.OnValidation,
-                                             "0", "#,##0;(#,##0);0");
+            if (textBoxDescription.Text.Length > 2)
+            {
+                Quantity = Int32.Parse(textBoxQuantity.Text);
+                Sku = textBoxSku.Text;
 
-            textBoxSku.DataBindings.Add("Text", productVM, "Product.Sku", false, DataSourceUpdateMode.OnValidation, "");
-
-            textBoxDescription.DataBindings.Add("Text", productVM, "Product.Description");
-
-            textBoxCost.DataBindings.Add("Text", productVM, "Product.Cost",
-                                          true, DataSourceUpdateMode.OnValidation,
-                                         "0.00", "#,##0.00;(#,##0.00);0.00");
-
-            checkBoxTaxable.DataBindings.Add("Checked", productVM, "Product.IsTaxable");
-
-            textBoxExtension.DataBindings.Add("Text", productVM, "Product.Extension",
-                                               true, DataSourceUpdateMode.OnValidation,
-                                              "0.00", "#,##0.00;(#,##0.00);0.00");
-
-            //dataGridViewProducts.AutoGenerateColumns = false;
-            //dataGridViewProducts.DataSource = productVM.Products;
+                Description = textBoxDescription.Text;
+             
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Something Terrrible has Happened");
+            }
         }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            //int index = dataGridViewProducts.CurrentRow.Index;
-
-            Product product = productVM.GetDisplayProduct();
-            //productVM.Products[index] = product;
-            //productVM.Products.ResetItem(index);
-
-            string outputLegend = string.Format("{0}\r\n{1}\r\n{2}\r\n{3}\r\n{4}\r\n{5}\r\n{6}\r\n"
-                                              , "ProdID:"
-                                              , "Quantity:"
-                                              , "SKU:"
-                                              , "Desc:"
-                                              , "Cost:"
-                                              , "Extension:"
-                                              , "Taxable:");
-
-
-            string outputData = string.Format("{0}\r\n{1:N0}\r\n{2}\r\n{3:N2}\r\n{4:N2}\r\n{5:N2}\r\n{6}\r\n"
-                                              , product.ProductId
-                                              , product.Quantity
-                                              , product.Sku
-                                              , product.Description
-                                              , product.Cost
-                                              , product.Extension
-                                              , product.IsTaxable);  
-        }
-
-  
     }
 }
