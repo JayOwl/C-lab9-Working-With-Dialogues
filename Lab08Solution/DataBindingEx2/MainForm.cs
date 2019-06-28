@@ -173,5 +173,13 @@ namespace DataBindingEx2
             labelProductLegend.Text = outputLegend;
             labelProductData.Text = outputData;
         }
+
+        private void ButtonEditRecord_Click(object sender, EventArgs e)
+        {
+            DialogEdit mainForm = new DialogEdit();
+
+            mainForm.ShowDialog();
+
+        }
     }
 }
